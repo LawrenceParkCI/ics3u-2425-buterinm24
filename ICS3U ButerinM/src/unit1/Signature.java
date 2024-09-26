@@ -15,6 +15,7 @@ public class Signature {
 		System.out.println("| |  |   |  ||  |.-'  `)|  | |  |\\ '-'  |    |  '--' /'  ''  '  |  |  \\   --.|  |   |  ||  ||  | |");
 		System.out.println("| `--'   `--'`--'`----' `--' `--' `--`--'    `------'  `----'   `--'   `----'`--'   `--'`--''--' |");
 		System.out.println("+------------------------------------------------------------------------------------------------+");
+		// The next 9 lines print an array of flowers, to represent my love of nature.
 		System.out.println("                    _");
 		System.out.println("                  _(_)_                          wWWWw   _");
 		System.out.println("      @@@@       (_)@(_)   vVVVv     _     @@@@  (___) _(_)_");
