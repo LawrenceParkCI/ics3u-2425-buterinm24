@@ -6,7 +6,7 @@ package unit1;
  */
 public class Signature {
 /**
- * Entry point to the program.
+ * Entry point to the program.  
  * @param args
  */
 	public static void main(String[] args) {
