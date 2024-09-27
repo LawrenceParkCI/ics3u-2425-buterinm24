@@ -5,7 +5,10 @@ package unit1;
  * @author Misha Buterin
  */
 public class Bingo {
-
+/**
+ * Entry point to the program
+ * @param args
+ */
 	public static void main(String[] args) {
 		// These are the rules for a Bingo game.
 		System.out.println("Rules of Bingo\n\n-------------------------------------------------------------------\n");

@@ -1,11 +1,14 @@
 package unit1;
 /**
  * Description: This program prints basic information about me, a school cheer, and my time table for the week of September 23rd.
- * Date: September 20, 2024
+ * Date: September 24, 2024
  * @author Misha Buterin
  */
 public class AboutMe {
-
+/**
+ * Entry point to the program.
+ * @param args
+ */
 	public static void main(String[] args) {
 		// The next five lines have a title and information about me.
 		System.out.println("About Me: \n---------");

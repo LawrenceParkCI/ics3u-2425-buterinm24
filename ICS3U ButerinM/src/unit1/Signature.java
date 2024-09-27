@@ -1,11 +1,14 @@
 package unit1;
 /**
- * Description: This program prints a signature of my name.
+ * Description: This program prints a signature of my name, and a picture that represents me.
  * Date: September 26, 2024
  * @author Misha Buterin
  */
 public class Signature {
-
+/**
+ * Entry point to the program.
+ * @param args
+ */
 	public static void main(String[] args) {
 		// The next 7 lines print a signature of my name.
 		System.out.println("+------------------------------------------------------------------------------------------------+");
