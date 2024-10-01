@@ -1,6 +1,6 @@
 package unit1;
 /**
- * Description:
+ * Description: This program is a work sheet about creating variables.
  * Date: September 30, 2024
  * @author Misha Buterin
  */
@@ -27,7 +27,7 @@ public class CreatingVariables {
 		 */
 		System.out.println("Part 1");
 		//what do you notice is being printed out?
-		// "Part 1" is being printed out
+		// "Part 1" is being printed out.
 		int myNum;
 		myNum = 10;
 		System.out.print("myNum = ");
@@ -36,7 +36,7 @@ public class CreatingVariables {
 		myNum = 20;
 		System.out.println("myNum is now " + myNum);
 		//Why do the two codes print out different things?
-		// Because you changed the value of myNum before typing out the second code.
+		// Because you changed the value of myNum before typing out the second code. 
 
 
 		System.out.println("Part 2 - Creating a Variable");
