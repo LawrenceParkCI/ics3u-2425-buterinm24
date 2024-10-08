@@ -5,10 +5,10 @@ package unit1;
  * @author Misha Buterin
  */
 public class NetPay {
-/**
- * Entry point to the program.
- * @param args
- */
+	/**
+	 * Entry point to the program.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		//Declaring variables
 		int hours = 40;
@@ -16,8 +16,13 @@ public class NetPay {
 		double insurance = 2.00;
 		double tax = 0.22;
 		double netPay;
+		
+		//Title
+		System.out.println("N E T  P A Y\n------------");
+		
 		//Calculating netPay
 		netPay = (hours*wage-insurance) - tax*(hours*wage-insurance);
+		
 		//Printing output
 		System.out.println("The employees net pay is " + netPay);
 
