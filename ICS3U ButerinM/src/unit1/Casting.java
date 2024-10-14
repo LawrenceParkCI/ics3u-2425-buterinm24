@@ -38,7 +38,7 @@ public class Casting {
 
 		//can you explain what is happening in this code?
 		doubleNum = doubleNum + 2.2;
-		//You are declaring the double Num to be the value of Num plus 2.2.
+		//You are declaring the double doubleNum to be the current value of doubleNum plus 2.2.
 		//The answer printed will be 12.2, because doubleNum was declared as 10 above.
 
 		//explicit casting
