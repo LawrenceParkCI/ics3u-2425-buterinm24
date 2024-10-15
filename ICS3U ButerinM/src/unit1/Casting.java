@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * Description: This program is a work sheet that demonstrates casting.
- * Date: October 14, 2024
+ * Date: October 10, 2024
  * @author Misha Buterin
  */
 public class Casting {
@@ -54,27 +54,25 @@ public class Casting {
       double myDouble = myInt;
       This is implicit casting.
 
-      double to int:
+      double to int
       int myInt = (int) myDouble;
       This is explicit casting.
 
-      int to long:
+      int to long
       long myLong = myInt;
       This is implicit casting.
 
-      long to int:
-	  long myLong = (int) myLong;
+      long to int
+	  int myInt = (int) myLong;
 	  This is explicit casting.
 
     Why do you think these are implicit/explicit? (Hint: Think about the size of each data and the type of data)
-
     int to double and int to long are both implicit because you are switching from a smaller to a larger data type,
     and no data has a chance of being lost. All the original information can still be stored.
 
     double to int and long to int are both explicit because you are switching from a larger to a smaller data type.
     These require explicit casting because some data is being cut off so specific code is needed to try and keep
     data as accurate as possible.
-
 		 */
 
 		System.out.println("Part 2");
@@ -92,5 +90,6 @@ public class Casting {
 		System.out.print("Rounding down to the nearest tenth, it is: " + myNum);
 
 		in.close();
+
 	}
 }
