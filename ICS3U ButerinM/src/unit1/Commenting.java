@@ -1,9 +1,9 @@
 package unit1;
 
 /**
-* Description:
-* Date:
-* @author 
+* Description: This program is a works sheet that demonstrates and explains commenting.
+* Date: October 15, 2024
+* @author Misha Buterin
 */
 public class Commenting {
   
