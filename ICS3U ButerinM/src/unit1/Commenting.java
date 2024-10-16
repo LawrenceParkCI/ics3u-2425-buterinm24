@@ -46,44 +46,43 @@ public class Commenting {
     */
 
 
-    int num1 = 20;
-    double num2 = 36.2;
-    String stringNum = "";
+    int num1 = 20; //The current value of num1 is 20
+    double num2 = 36.2; //The current value of num2 is 36.2
+    String stringNum = ""; //stringNum has no value currently.
 
     /*
     * Variables Name    |   Value
     * ---------------------------------
-    * num1              |
-    * num2              |
-    * stringNum         |
+    * num1              |		20
+    * num2              |		36.2
+    * stringNum         |		
     */
 
-    num1 += 20;
-    num1 = num1 / 3 * 2;
-    num1 = (int)(num2 * 3 - (2 + 5) * 8);
-    num2 = ((int)num2) - num1;
-    stringNum = num1 + " " + num2;
+    num1 += 20; //The value of num1 is now 40.
+    num1 = num1 / 3 * 2; //The value of num1 is now 26.
+    num1 = (int)(num2 * 3 - (2 + 5) * 8); //The value of num1 is now 52.
+    num2 = ((int)num2) - num1; //The value of num2 is now -16.0
+    stringNum = num1 + " " + num2; //The value of stringNum is now 52 -16.0.
 
     /*
     * Variables Name    |   Value
     * ---------------------------------
-    * num1              |
-    * num2              |
-    * stringNum         |
+    * num1              |		52
+    * num2              |		-16.0
+    * stringNum         |		52 -16.0
     */
 
-    num2 /= 2.5;
-    num1 /= 2;
-    stringNum = stringNum + "; ";
-    stringNum = stringNum + num1 + " " + num2;
-
+    num2 /= 2.5; //The value of num2 is now -6.4.
+    num1 /= 2; //The value of num1 is now 26
+    stringNum = stringNum + "; "; //The value of stringNum is now 52 -16.0; .
+    stringNum = stringNum + num1 + " " + num2; //The value of stringNum is now 52 -16.0; 26 -6.4.
 
     /*
     * Variables Name    |   Value
     * ---------------------------------
-    * num1              |
-    * num2              |
-    * stringNum         |
+    * num1              |		26
+    * num2              |		-6.4
+    * stringNum         |		52 -16.0; 26 -6.4
     */
   }
 }
