@@ -3,7 +3,7 @@ package unit1;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 /**
- * Description: This program is a work sheet that demonstrates formatting decimals.
+ * Description: This program is a work sheet that demonstrates how to format decimal values.
  * Date: October 17, 2024
  * @author Misha Buterin
  */
