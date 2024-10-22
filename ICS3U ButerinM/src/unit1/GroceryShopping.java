@@ -60,34 +60,32 @@ public class GroceryShopping {
 		double totalPrice1 = price1*quantity1;
 		double totalPrice2 = price2*quantity2;
 
-		//Getting date and time.
+		//Getting and formatting date and time.
 		LocalDateTime now = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yy HH:mm");
 		String formattedDateTime = now.format(formatter);
 
 		//Printing output.
 		System.out.println("\nHere is your reciept:\n");
-
-		//Printing output.
-		System.out.println("+---------------------------------------------------+");
-		System.out.format("%-1s%52s", "|", "|");
-		System.out.println("\n|∙∙∙∙∙∙∙∙∙∙∙∙∙∙Ms. Buterin's Grocery∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙|");
-		System.out.format("%-1s%52s", "|", "|");
-		System.out.format("\n%-1s%-17s%35s", "|", formattedDateTime, "|");
-		System.out.println("\n|---------------------------------------------------|");
-		System.out.format("%-13s%-13s%-13s%-13s%-1s", "|Item Name", "|Price", "|Quanity", "|Total Price", "|");
-		System.out.println("\n|------------|------------|------------|------------|");
-		System.out.format("%-2s%-10s%-4s%9s%-4s%9s%-4s%9s%-1s", "|", item1, " | $", money.format(price1), " |", quantity1, " | $", money.format(totalPrice1), " |");
-		System.out.format("\n%-2s%-10s%-4s%9s%-4s%9s%-4s%9s%-1s", "|", item2, " | $", money.format(price2), " |", quantity2, " | $", money.format(totalPrice2), " |");
-		System.out.println("\n|---------------------------------------------------|");
+		System.out.println("+-------------------------------------------------------+");
+		System.out.format("%-1s%56s", "|", "|");
+		System.out.println("\n|∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙Ms. Buterin's Grocery∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙|");
+		System.out.format("%-1s%56s", "|", "|");
+		System.out.format("\n%-1s%-17s%39s", "|", formattedDateTime, "|");
+		System.out.println("\n|-------------------------------------------------------|");
+		System.out.format("%-14s%-14s%-14s%-14s%-1s", "| Item Name", "| Price", "| Quanity", "| Total Price", "|");
+		System.out.println("\n|-------------|-------------|-------------|-------------|");
+		System.out.format("%-2s%-11s%-4s%10s%-4s%10s%-4s%10s%-1s", "|", item1, " | $", money.format(price1), " |", quantity1, " | $", money.format(totalPrice1), " |");
+		System.out.format("\n%-2s%-11s%-4s%10s%-4s%10s%-4s%10s%-1s", "|", item2, " | $", money.format(price2), " |", quantity2, " | $", money.format(totalPrice2), " |");
+		System.out.println("\n|-------------------------------------------------------|");
 		//Calculating and printing sub total, tax, and total values.
 		double subtotal = totalPrice1 + totalPrice2;
-		System.out.format("%-1s%41s%9s%2s", "|", "Subtotal: $", money.format(subtotal), "|");
+		System.out.format("%-1s%45s%9s%2s", "|", "Subtotal: $", money.format(subtotal), "|");
 		double taxPrice = taxRate * subtotal;
-		System.out.format("\n%-1s%41s%9s%2s", "|", "Tax: $", money.format(taxPrice), "|");
+		System.out.format("\n%-1s%45s%9s%2s", "|", "Tax: $", money.format(taxPrice), "|");
 		double total = subtotal + taxPrice;
-		System.out.format("\n%-1s%41s%9s%2s", "|", "Total: $", money.format(total), "|");
-		System.out.println("\n+---------------------------------------------------+");
+		System.out.format("\n%-1s%45s%9s%2s", "|", "Total: $", money.format(total), "|");
+		System.out.println("\n+-------------------------------------------------------+");
 		
 		System.out.println("\nThis is approximately $" + Math.round(total) + ".");
 		
