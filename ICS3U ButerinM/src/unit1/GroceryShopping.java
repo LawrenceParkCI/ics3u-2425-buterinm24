@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * Description: This program allows a user to purchase two items at a grocery store and then prints their receipt.
- * Date: October 22, 2024
+ * Date: October 23, 2024
  * @author Misha Buterin
  */
 public class GroceryShopping {
@@ -17,7 +17,8 @@ public class GroceryShopping {
 	 */
 	public static void main(String[] args) {
 		Scanner sc = new Scanner (System.in);
-		//Printing title and designs.
+		
+		//Printing the title and designs.
 		System.out.println("|| $$$ \\\\\\ ========= \"Ms. Buterin's Grocery\" ========= /// $$$ ||");
 		System.out.format("%-2s%63s", "||", "||");
 		System.out.format("\n%-21s%-11s%-24s%-7s%2s", "||      _   ", "   \\,-,", "         \\||/", " \\/", "||");
@@ -28,7 +29,7 @@ public class GroceryShopping {
 		System.out.format("\n%-2s%63s", "||", "||");
 		System.out.println("\n|| $$$ \\\\\\ =========================================== /// $$$ ||");
 
-		//Declaring variables.
+		//Declaring variables for user input.
 		String item1, item2;
 		double price1, price2;
 		int quantity1, quantity2;
@@ -38,25 +39,25 @@ public class GroceryShopping {
 		DecimalFormat money = new DecimalFormat("0.00");      
 
 		//Collecting input for the first item.
-		System.out.print("\nWelcome to Ms. Buterin's Grocery!\nWhat is the first product you would like to buy?");
+		System.out.print("\nWelcome to Ms. Buterin's Grocery!\nWhat is the first product you would like to buy? ");
 		item1 = sc.nextLine();
-		System.out.print("How much does it cost?");
+		System.out.print("How much does it cost? ");
 		price1 = sc.nextDouble();
-		System.out.print("How many are you buying?");
+		System.out.print("How many are you buying? ");
 		quantity1 = sc.nextInt();
 		System.out.println("Great!");
 		sc.nextLine();
 
 		//Collecting input for the second item.
-		System.out.print("\nWhat is the second product you would like to buy?");
+		System.out.print("\nWhat is the second product you would like to buy? ");
 		item2 = sc.nextLine();
-		System.out.print("How much does it cost?");
+		System.out.print("How much does it cost? ");
 		price2 = sc.nextDouble();
-		System.out.print("How many are you buying?");
+		System.out.print("How many are you buying? ");
 		quantity2 = sc.nextInt();
 		System.out.println("Perfect!");
-
-		//Calculations
+		
+		//Calculations.
 		double totalPrice1 = price1*quantity1;
 		double totalPrice2 = price2*quantity2;
 
@@ -67,26 +68,25 @@ public class GroceryShopping {
 
 		//Printing output.
 		System.out.println("\nHere is your reciept:\n");
-		System.out.println("+-------------------------------------------------------+");
-		System.out.format("%-1s%56s", "|", "|");
-		System.out.println("\n|∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙Ms. Buterin's Grocery∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙|");
-		System.out.format("%-1s%56s", "|", "|");
-		System.out.format("\n%-1s%-17s%39s", "|", formattedDateTime, "|");
-		System.out.println("\n|-------------------------------------------------------|");
-		System.out.format("%-14s%-14s%-14s%-14s%-1s", "| Item Name", "| Price", "| Quanity", "| Total Price", "|");
-		System.out.println("\n|-------------|-------------|-------------|-------------|");
-		System.out.format("%-2s%-11s%-4s%10s%-4s%10s%-4s%10s%-1s", "|", item1, " | $", money.format(price1), " |", quantity1, " | $", money.format(totalPrice1), " |");
-		System.out.format("\n%-2s%-11s%-4s%10s%-4s%10s%-4s%10s%-1s", "|", item2, " | $", money.format(price2), " |", quantity2, " | $", money.format(totalPrice2), " |");
-		System.out.println("\n|-------------------------------------------------------|");
+		System.out.println("+---------------------------------------------------------------+");
+		System.out.format("%-1s%64s", "|", "|");
+		System.out.println("\n|∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙Ms. Buterin's Grocery∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙|");
+		System.out.format("%-1s%64s", "|", "|");
+		System.out.format("\n%-1s%-1s%-17s%46s", "|", " ", formattedDateTime, "|");
+		System.out.println("\n|---------------------------------------------------------------|");
+		System.out.format("%-16s%-16s%-16s%-16s%-1s", "| Item Name", "| Price", "| Quanity", "| Total Price", "|");
+		System.out.println("\n|---------------|---------------|---------------|---------------|");
+		System.out.format("%-2s%-13s%-4s%12s%-4s%12s%-4s%12s%-1s", "|", item1, " | $", money.format(price1), " |", quantity1, " | $", money.format(totalPrice1), " |");
+		System.out.format("\n%-2s%-13s%-4s%12s%-4s%12s%-4s%12s%-1s", "|", item2, " | $", money.format(price2), " |", quantity2, " | $", money.format(totalPrice2), " |");
+		System.out.println("\n|---------------------------------------------------------------|");
 		//Calculating and printing sub total, tax, and total values.
 		double subtotal = totalPrice1 + totalPrice2;
-		System.out.format("%-1s%45s%9s%2s", "|", "Subtotal: $", money.format(subtotal), "|");
+		System.out.format("%-1s%50s%12s%2s", "|", "Subtotal: $", money.format(subtotal), "|");
 		double taxPrice = taxRate * subtotal;
-		System.out.format("\n%-1s%45s%9s%2s", "|", "Tax: $", money.format(taxPrice), "|");
+		System.out.format("\n%-1s%50s%12s%2s", "|", "Tax: $", money.format(taxPrice), "|");
 		double total = subtotal + taxPrice;
-		System.out.format("\n%-1s%45s%9s%2s", "|", "Total: $", money.format(total), "|");
-		System.out.println("\n+-------------------------------------------------------+");
-		
+		System.out.format("\n%-1s%50s%12s%2s", "|", "Total: $", money.format(total), "|");
+		System.out.println("\n+---------------------------------------------------------------+");
 		System.out.println("\nThis is approximately $" + Math.round(total) + ".");
 		
 		//Challenge 1:
@@ -96,7 +96,9 @@ public class GroceryShopping {
 		total = (Math.round(total*20)/20.0);
 		System.out.println("To the nearest five cents, this is $" + money.format(total) + ".");
 		
+		//Concluding the program.
 		System.out.println("\nThank you for shopping at Ms. Buterin's Grocery.\nHave a great day!");
+		
 		sc.close();
 
 	}
