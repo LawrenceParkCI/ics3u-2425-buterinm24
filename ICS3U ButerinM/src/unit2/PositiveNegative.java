@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * Description: This program tests if an integer is positive or negative, and then prints the results.
- * Date: November 1, 2024
+ * Date: November 4, 2024
  * @author Misha Buterin
  */
 public class PositiveNegative {
@@ -23,16 +23,12 @@ public class PositiveNegative {
 		int num = sc.nextInt();
 
 		//Testing if the integer is positive or negative and printing results
-		if (num > 0) {
+		//Assuming zero as a positive integer for now
+		if (num >= 0) { 
 			System.out.println("Your integer is positive.");
 		}
-		if (num < 0) {
+		else {
 			System.out.println("Your integer is negative");
-		}
-		
-		//Accounting for zero
-		if (num == 0) {
-			System.out.println("Your integer is neutral.");
 		}
 
 		//Testing if the integer is divisible by 7 and printing results
