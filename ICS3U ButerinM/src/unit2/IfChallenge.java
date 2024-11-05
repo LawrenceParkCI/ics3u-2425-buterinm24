@@ -54,7 +54,7 @@ public class IfChallenge {
 			System.out.println("You should really consider thinking about 6.");
 		}
 		else {
-			System.out.println("You can keep wholesome");
+			System.out.println("You can keep wholesome.");
 		}
 
 		//Checking if ones digit of favNum is 8, 9, or another number
