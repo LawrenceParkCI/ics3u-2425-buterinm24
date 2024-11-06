@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * Description: This program
- * Date: November 5, 2024
+ * Date: November 6, 2024
  * @author Misha Buterin
  */
 public class IfChallenge {
@@ -57,7 +57,16 @@ public class IfChallenge {
 			System.out.println("You can keep wholesome.");
 		}
 
-		//Checking if ones digit of favNum is 8, 9, or another number
+		//Checking if ones digit is 8, 9, or something else
+		if (favNum%10 == 8) {
+			System.out.println("You are too full.");
+		}
+		else if (favNum%10 == 9) {
+			System.out.println("Canada is a nice country");
+		}
+		else {
+			System.out.println("Don't count on it");
+		}
 
 		in.close();
 
