@@ -3,8 +3,8 @@ package unit2;
 import java.util.Scanner;
 
 /**
- * Description: This program
- * Date: November 6, 2024
+ * Description: This program asks for the users favourite number checks various information about that number.
+ * Date: November 7, 2024
  * @author Misha Buterin
  */
 public class IfChallenge {

@@ -3,8 +3,8 @@ package unit2;
 import java.util.Scanner;
 
 /**
- * Description: This program 
- * Date: November 6, 2024
+ * Description: This program checks if three user inputed numbers are in order.
+ * Date: November 7, 2024
  * @author Misha Buterin
  */
 public class IfChallenge2 {
@@ -22,7 +22,15 @@ public class IfChallenge2 {
 		 */
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter three numbers, press <Enter> after each one: ");
-		num1 =
+		int num1 = sc.nextInt();
+		int num2 = sc.nextInt();
+		int num3 = sc.nextInt();
+		if (num1 < num2 && num2 < num3) {
+			System.out.println("Your numbers are strictly in order.");
+		}
+		else {
+			System.out.println("Your numbers are not strictly in order");
+		}
 		sc.close();
 	}
 }
