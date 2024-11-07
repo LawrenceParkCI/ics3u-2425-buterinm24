@@ -21,6 +21,8 @@ public class IfChallenge2 {
 	    ie.  6 5 7 or 5 5 7 are not
 		 */
 		Scanner sc = new Scanner(System.in);
+		
+		//Getting user input
 		System.out.println("Enter three numbers, press <Enter> after each one: ");
 		int num1 = sc.nextInt();
 		int num2 = sc.nextInt();
@@ -29,7 +31,7 @@ public class IfChallenge2 {
 			System.out.println("Your numbers are strictly in order.");
 		}
 		else {
-			System.out.println("Your numbers are not strictly in order");
+			System.out.println("Your numbers are not strictly in order.");
 		}
 		sc.close();
 	}
