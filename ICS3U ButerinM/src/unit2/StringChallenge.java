@@ -26,8 +26,13 @@ public class StringChallenge {
 		 */
 		
 		Scanner sc = new Scanner(System.in);
-	
 		//Idea: make class attendance
+		System.out.println("Enter five names, ensure to press <Enter> after each one.");
+		String name1 = sc.nextLine();
+		String name2 = sc.nextLine();
+		String name3 = sc.nextLine();
+		String name4 = sc.nextLine();
+		String name5 = sc.nextLine();
 		
 		sc.close();
 	}
