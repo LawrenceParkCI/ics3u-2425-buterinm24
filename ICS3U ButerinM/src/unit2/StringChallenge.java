@@ -27,9 +27,7 @@ public class StringChallenge {
 		
 		Scanner sc = new Scanner(System.in);
 	
-		System.out.print("Out of the seven colours on the rainbow, which one is your favourite?");
-		String colour = sc.nextLine();
-		
+		//Idea: make class attendance
 		
 		sc.close();
 	}
