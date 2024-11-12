@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * Description: This program demonstrates different String comparison methods.
- * Date: November 11, 2024
+ * Date: November 12, 2024
  * @author Misha Buterin
  */
 public class StringChallenge {
@@ -24,11 +24,31 @@ public class StringChallenge {
 	      -when you use the different String functions
 	      -when you are casting and how the value is changed
 		 */
+		
 		Scanner sc = new Scanner(System.in);
+		
+		//Getting user input
 		System.out.print("Please enter two names of your choice, press <Enter> after each one: ");
 		String name1 = sc.nextLine();
-		name1 = name1.toLowerCase(); //Ensuring that names are compared by actual letters only
 		String name2 = sc.nextLine();
+
+		//Demonstrating .equalsIgnoreCase()
+		if (name1.equalsIgnoreCase(name2)) {
+			System.out.println("Both names have the same spelling.");
+		}
+		else {
+			System.out.println("The names are spelled differently.");
+		}
+
+		//Demonstrating .equals()
+		if (name1.equals(name2)) {
+			System.out.println("Both names entered are exactly the same.");
+		}
+		else {
+			System.out.println("The names entered are different.");
+		}
+
+		name1 = name1.toLowerCase(); //Ensuring that names are compared by actual letters only
 		name2 = name2.toLowerCase();
 
 		//Demonstrating .compareTo()
@@ -42,13 +62,6 @@ public class StringChallenge {
 		else {
 			System.out.println("Both names are the same.");
 		}
-		
-		//Demonstrating .equals()
-		if (name1.equals(name2)) {
-			System.out.println("Both names entered are exactly the same.");
-		}
-		else {
-			System.out.println("The names entered are different.");
-		}
+
 	}
 }

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * Description: This program is a work sheet about switch statements.
- * Date: November 11, 2024
+ * Date: November 12, 2024
  * @author Misha Buterin
  */
 public class Switch1 {
@@ -90,7 +90,11 @@ public class Switch1 {
 				System.out.println("It's the weekend!");
 				break;
 			case "sunday":
-				System.out.println("It's the weekend");		
+				System.out.println("It's the weekend");	
+				break;
+			default:
+				System.out.println("The day you entered does not exist.");
+				break;
 		}
 		
 		sc.close();
