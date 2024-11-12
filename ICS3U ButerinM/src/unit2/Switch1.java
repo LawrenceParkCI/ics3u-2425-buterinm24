@@ -3,7 +3,7 @@ package unit2;
 import java.util.Scanner;
 
 /**
- * Description:
+ * Description: This program is a work sheet about switch statements.
  * Date: November 11, 2024
  * @author Misha Buterin
  */
@@ -48,11 +48,11 @@ public class Switch1 {
 		//Run the program. Type in a number between 1-7, and then a number bigger than that. What is the result?
 		//For the numbers 1-7, the respective days are printed out based on what case it is (1 = Sunday, 2 = Monday, etc.)
 		//For any number greater than 7, "We don't have that day yet" is printed out because it is the default result.
-		
+
 		//What do you think default means?
 		//I believe that default means that if none of the cases are true, then this is what should be printed. 
 		//default is essentially like else in an if statement.
-		
+
 		//What do you think break means? What happens when you remove a break?
 		//break tells the program to stop looking at other cases since this one is already true.
 		//When I removed a break, the program printed the day that matches the number, and every day after that.
@@ -60,8 +60,39 @@ public class Switch1 {
 		//because the program wasn't told to stop after one case was true.
 
 		//Create another program, this time asking what day it is (String), and printing out how many days until the weekend
-		System.out.println("What day is it today?");
-		String weekDay = in.nextLine();
+
+		Scanner sc = new Scanner(System.in);
+
+		//Getting user input
+		System.out.print("What day is it today? ");
+		String weekDay = sc.nextLine();
+
+		weekDay = weekDay.toLowerCase(); //Making formats match up
 		
+		//Printing output
+		switch (weekDay) {
+			case "monday":
+				System.out.println("There are 5 days until the weekend.");
+				break;
+			case "tuesday":
+				System.out.println("There are 4 days until the weekend.");
+				break;
+			case "wednesday":
+				System.out.println("There are 3 days until the weekend.");
+				break;
+			case "thursday":
+				System.out.println("There are 2 days until the weekend.");
+				break;
+			case "friday":
+				System.out.println("There is one day until the weekend!");
+				break;
+			case "saturday":
+				System.out.println("It's the weekend!");
+				break;
+			case "sunday":
+				System.out.println("It's the weekend");		
+		}
+		
+		sc.close();
 	}
 }
