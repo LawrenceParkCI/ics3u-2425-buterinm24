@@ -1,9 +1,10 @@
 package unit2;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /**
- * Description: This program demonstrates different String comparison methods.
+ * Description: This program demonstrates different String comparison methods through a geography trivia experience.
  * Date: November 12, 2024
  * @author Misha Buterin
  */
@@ -27,41 +28,71 @@ public class StringChallenge {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		//Getting user input
-		System.out.print("Please enter two names of your choice, press <Enter> after each one: ");
-		String name1 = sc.nextLine();
-		String name2 = sc.nextLine();
-
-		//Demonstrating .equalsIgnoreCase()
-		if (name1.equalsIgnoreCase(name2)) {
-			System.out.println("Both names have the same spelling.");
-		}
-		else {
-			System.out.println("The names are spelled differently.");
-		}
-
-		//Demonstrating .equals()
-		if (name1.equals(name2)) {
-			System.out.println("Both names entered are exactly the same.");
-		}
-		else {
-			System.out.println("The names entered are different.");
-		}
-
-		name1 = name1.toLowerCase(); //Ensuring that names are compared by actual letters only
-		name2 = name2.toLowerCase();
-
+		//Formatting
+		DecimalFormat percent = new DecimalFormat("00.00%");
+	
+		//Title
+		System.out.println("Geography Fun!\n--------------");
+		
 		//Demonstrating .compareTo()
-		int comparison = (name1.compareTo(name2));
+		System.out.print("Please enter two cities of your choice, press <Enter> after each one: ");
+		String city1 = sc.nextLine();
+		String city2 = sc.nextLine();
+
+		city1 = city1.toLowerCase(); //Ensuring that cities are compared by actual letters only
+		city2 = city2.toLowerCase();
+
+		int comparison = (city1.compareTo(city2)); //Using compare to method to compare cities alphabetically
 		if (comparison < 0) {
-			System.out.println("The first name comes before the second, alphabetically.");
+			System.out.println("The first city comes before the second, alphabetically.");
 		}
 		else if (comparison > 0) {
-			System.out.println("The first name comes after the second, alphabetically.");
+			System.out.println("The first city comes after the second, alphabetically.");
 		}
 		else {
-			System.out.println("Both names are the same.");
+			System.out.println("Both cities entered are the same.");
 		}
-
+		
+		//Demonstrating .equals()
+		System.out.print("\nPlease enter the number of continents in the world: ");
+		String userAns = sc.nextLine();
+		String ans = "7";
+		
+		if (userAns.equals(ans)) { //Using .equals to see if the answer is correct
+			System.out.println("That is correct!");
+		}
+		else {
+			System.out.println("That is not correct.");
+		}
+		
+		System.out.println("\nHow many continents have you visited?");
+		int visitedContinents = sc.nextInt();
+		sc.nextLine();
+		int totalContinents = Integer.parseInt(ans); //Example of explicit casting by changing a String to an int
+		int remainingContinents = totalContinents - visitedContinents;
+		
+		if (remainingContinents > 0) {
+			System.out.println("You still have " + remainingContinents + " continent(s) to explore!");
+			double percentRemaining = (remainingContinents * 1.0) / totalContinents; //Example of implicit casting to change the percentRemaining from int to double
+			System.out.println("To be more precise, you have " + percent.format(percentRemaining) + " of the worlds continents left to explore.");
+		}
+		else if (remainingContinents == 0) {
+			System.out.println("Wow! That's amazing.");
+		}
+		else {
+			System.out.println("I don't think that is possible.");
+		}
+		
+		//Demonstrating .equalsIgnoreCase()
+		String answer = "North America";
+		System.out.print("\nWhat is the name of the continent above South America? "); 
+		String userAnswer = sc.nextLine();
+		
+		if (userAnswer.equalsIgnoreCase(answer)) { //Using .equalsIgnoreCase() to check answer, because the user may forget capitals but still have the correct answer
+			System.out.println("That is correct!");
+		}
+		else {
+			System.out.println("That is not correct.");
+		}
 	}
 }

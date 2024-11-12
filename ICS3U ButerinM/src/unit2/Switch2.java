@@ -61,5 +61,7 @@ public class Switch2 {
 		
 		//Printing output
 		System.out.println(month + " has " + monthDays + " days.");
+		
+		sc.close();
 	}
 }
