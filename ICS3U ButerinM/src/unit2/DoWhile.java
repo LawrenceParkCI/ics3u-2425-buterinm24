@@ -63,10 +63,12 @@ public class DoWhile {
 		//Create a do-while loop that asks for a word, and 
 		//prints it out 20 times.
 		
+		//Getting user input
 		System.out.print("Enter a word: ");
 		String word = in.nextLine();
 		int timesRepeated = 0;
 		
+		//Printing output
 		do {
 			System.out.println(word);
 			timesRepeated ++;
