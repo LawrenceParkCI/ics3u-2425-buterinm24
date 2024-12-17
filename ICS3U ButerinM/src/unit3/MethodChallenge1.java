@@ -1,7 +1,7 @@
 package unit3;
 /**
- * Description:
- * Date: December 13, 2024
+ * Description: This program prints the distance between two points using a distance method.
+ * Date: December 17, 2024
  * @author Misha Buterin
  */
 public class MethodChallenge1 {
@@ -23,18 +23,17 @@ public class MethodChallenge1 {
 	}
 
 	/**
-	  (Description)
-	  @param x1 -> x-value of the first coordinate
-	  @param y1 -> y-value of the first coordinate
-	  @param x2 -> x-value of the second coordinate
-	  @param y2 -> y-value of the second coordinate
-	  @return 
+	 * This method takes two points and returns the
+	   distance between them
+	 * @param x1 - x-value of the first point
+	 * @param y1 - y-value of the first point
+	 * @param x2 - x-value of the second point
+	 * @param y2 - y-value of the second point
+	 * @return - distance between the 2 points passed to the method
 	 */
-	public static double distance( int x1, int y1, int x2, int y2 )
-	{
-		// put your code up in here
-		
-		return 0;
+	public static double distance( int x1, int y1, int x2, int y2 ) {
+		double distance = Math.sqrt(Math.pow(y2 - y1, 2) + Math.pow(x2 - x1, 2));
+		return distance;
 	}
 
 }
