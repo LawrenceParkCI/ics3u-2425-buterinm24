@@ -1,7 +1,7 @@
 package unit3;
 /**
- * Description: This program prints four different math methods: distance, hypotenuse, numOfFactors, isPrime
- * Date: December 17, 2024
+ * Description: This program prints various methods that perform special math operations.
+ * Date: December 18, 2024
  * @author Misha Buterin
  */
 public class MathPlus {
@@ -11,7 +11,7 @@ public class MathPlus {
 	 */
 	public static void main(String[] args) {	
 		//Testing methods
-		
+
 		//Distance method
 		double distance = distance(1, 5, 2, 5);
 		System.out.println(distance);
@@ -27,6 +27,53 @@ public class MathPlus {
 		//isPrime method
 		boolean isPrime = isPrime(11);
 		System.out.println(isPrime);
+
+		//int sum method
+		int[] array1 = {1, 2, 3};
+		int sum = sum(array1);
+		System.out.println(sum);
+
+		//double sum method
+		double[] array2 = {1.2, 2.4, 3.4};
+		double sum2 = sum(array2);
+		System.out.println(sum2);
+
+		//int min method
+		int[] array3 = {5, 7, 4, 8};
+		int min = min(array3);
+		System.out.println(min);
+
+		//double min method
+		double[] array4 = {5.2, 7.6, 5.3, 8.8};
+		int min2 = min(array4);
+		System.out.println(min2);
+
+		//int max method
+		int[] array5 = {5, 8, 9, 10, 6};
+		int max = max(array5);
+		System.out.println(max);
+
+		//double max method
+		double[] array6 = {5.2, 5.3, 5.4, 5.5, 5.6};
+		int max2 = max(array6);
+		System.out.println(max2);
+
+		//int bigDifference method
+		int[] array7 = {4, 8, 9, 10, 1};
+		int difference = bigDifference(array7);
+		System.out.println(difference);
+
+		//double bigDifference method
+		double[] array8 = {5.2, 4.2};
+		double difference2 = bigDifference(array8);
+		System.out.println(difference2);
+		
+		//factors method
+		int num = 8;
+		int[] factors = factors(num);
+		for(int i = 0; i < factors.length; i++) {
+			System.out.print(factors[i] + " ");
+		}
 	}
 
 	/**
@@ -63,12 +110,10 @@ public class MathPlus {
 	 */
 	public static int numOfFactors (int num) {
 		int numOfFactors = 0;
-		
 		for (int i = 1; i <= num; i++)
 			if ((num % i) == 0) {
 				numOfFactors++;
 			}
-		
 		return numOfFactors;
 	}
 
@@ -80,18 +125,184 @@ public class MathPlus {
 	 */
 	public static boolean isPrime (int num) {
 		boolean isPrime = true;
-		
 		if (num <= 1) {
 			isPrime = false;
 		}
-		
 		for (int i = 2; i <= num/2; i++) {
 			if ((num % i) == 0) {
 				isPrime = false;
 				break;
 			}
 		}
-		
 		return isPrime;
+	}
+
+	/**
+	 * This method adds all the numbers in an array
+	 * of integers and then returns the sum
+	 * @param x - the array of integers being added
+	 * @return - the sum of the array passed to the method
+	 */
+	public static int sum(int[] numbers) {
+		int sum = 0;
+		for (int i = 0; i < numbers.length; i++) {
+			sum += numbers[i];
+		}
+		return sum;
+	}
+
+	/**
+	 * This method adds all the numbers in an array
+	 * of doubles and then returns the sum
+	 * @param x - the array of doubles being added
+	 * @return - the sum of the array passed to the method
+	 */
+	public static double sum(double[] numbers) {
+		double sum = 0;
+		for (int i = 0; i < numbers.length; i++) {
+			sum += numbers[i];
+		}
+		return sum;
+	}
+
+	/**
+	 * This method finds the smallest number in an
+	 * array of ints and returns the index
+	 * of where it is
+	 * @param numbers - array where min value is being found
+	 * @return - the index of the minimum value in the array passed to the method
+	 */
+	public static int min(int[] numbers) {
+		int minIndex = 0;
+		int min = numbers[minIndex];
+		for (int i = 0; i < numbers.length; i++) {
+			if (numbers[i] <= min){
+				min = numbers[i];
+				minIndex = i;
+			}
+		}
+		return minIndex;
+	}
+
+	/**
+	 * This method finds the smallest number in an
+	 * array of doubles and returns the index of where it is
+	 * @param numbers - array where min index is being found
+	 * @return - the index of the minimum value in the array passed to the method
+	 */
+	public static int min(double[] numbers) {
+		int minIndex = 0;
+		double min = numbers[minIndex];
+		for (int i = 0; i < numbers.length; i++) {
+			if (numbers[i] <= min){
+				min = numbers[i];
+				minIndex = i;
+			}
+		}
+		return minIndex;
+	}
+
+	/**
+	 * This method finds the largest number in an
+	 * array of ints and returns the index of where it is
+	 * @param numbers - array where the max index is being found
+	 * @return - the index of the maximum value in the array passed to the method
+	 */
+	public static int max(int[] numbers) {
+		int maxIndex = 0;
+		int max = numbers[maxIndex];
+		for(int i = 0; i < numbers.length; i++) {
+			if (numbers[i] >= max){
+				max = numbers[i];
+				maxIndex = i;
+			}
+		}
+		return maxIndex;
+	}
+
+	/**
+	 * This method finds the largest number in an
+	 * array of ints and returns the index of where it is
+	 * @param numbers - array where the max index is being found
+	 * @return - the index of the maximum value in the array passed to the method
+	 */
+	public static int max(double[] numbers) {
+		int maxIndex = 0;
+		double max = numbers[maxIndex];
+		for(int i = 0; i < numbers.length; i++) {
+			if (numbers[i] >= max){
+				max = numbers[i];
+				maxIndex = i;
+			}
+		}
+		return maxIndex;
+	}
+
+	/**
+	 * This method finds the difference between the largest
+	 * and smallest numbers in an array of integers
+	 * @param numbers - array where the difference between max and min is being found
+	 * @return - the difference between the largest and smallest ints 
+	 * in the array passed to the method
+	 */
+	public static int bigDifference(int[] numbers) {
+		int max = numbers[0];
+		int min = numbers[0];
+		for (int i = 1; i < numbers.length; i++) {
+			if (numbers[i] > max) {
+				max = numbers[i];
+			}
+			else if (numbers[i] < min) {
+				min = numbers[i];
+			}
+		}
+		int difference = max - min;
+		return difference;
+	}
+
+	/**
+	 * This method finds the difference between the largest
+	 * and smallest numbers in an array of doubles
+	 * @param numbers - array where the difference between max and min is being found
+	 * @return - the difference between the largest and smallest doubles 
+	 * in the array passed to the method
+	 */
+	public static double bigDifference(double[] numbers) {
+		double max = numbers[0];
+		double min = numbers[0];
+		for (int i = 1; i < numbers.length; i++) {
+			if (numbers[i] > max) {
+				max = numbers[i];
+			}
+			else if (numbers[i] < min) {
+				min = numbers[i];
+			}
+		}
+		double difference = max - min;
+		return difference;
+	}
+
+	/**
+	 * This method returns an array of factors
+	 * for a given int passed to the method
+	 * @param num - int being factored
+	 * @return - array of factors for num
+	 */
+	public static int[] factors(int num) {
+		int numOfFactors = 0;
+		for (int i = 1; i <= num; i++) {
+			if ((num % i) == 0) {
+				numOfFactors++;
+			}
+		}
+		int[] factors = new int[numOfFactors];
+		int index = 0;
+		for (int i = 1; i <= numOfFactors; i++) {
+			if ((num % i) == 0) {
+				factors[index++] = i;
+			}
+		}
+		//DOESNT WORK
+		return factors;
 	}
 }
