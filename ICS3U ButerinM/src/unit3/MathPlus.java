@@ -1,7 +1,7 @@
 package unit3;
 /**
  * Description: This program prints various methods that perform special math operations.
- * Date: December 18, 2024
+ * Date: December 20, 2024
  * @author Misha Buterin
  */
 public class MathPlus {
@@ -79,11 +79,11 @@ public class MathPlus {
 	/**
 	 * This method takes two points and returns the
 	   distance between them
-	 * @param x1 - x-value of the first point
-	 * @param y1 - y-value of the first point
-	 * @param x2 - x-value of the second point
-	 * @param y2 - y-value of the second point
-	 * @return - distance between the 2 points passed to the method
+	 * @param x1 -> x-value of the first point
+	 * @param y1 -> y-value of the first point
+	 * @param x2 -> x-value of the second point
+	 * @param y2 -> y-value of the second point
+	 * @return -> distance between the 2 points passed to the method
 	 */
 	public static double distance( int x1, int y1, int x2, int y2 ) {
 		double distance = Math.sqrt(Math.pow(y2 - y1, 2) + Math.pow(x2 - x1, 2));
@@ -93,9 +93,9 @@ public class MathPlus {
 	/**
 	 * This method takes the lengths of the two legs
 	 * of a triangle and returns the hypotenuse
-	 * @param a - length of the first leg of the triangle
-	 * @param b - length of the second leg of the triangle
-	 * @return - the hypotenuse based on the two side lengths passed to the method
+	 * @param a -> length of the first leg of the triangle
+	 * @param b -> length of the second leg of the triangle
+	 * @return -> the hypotenuse based on the two side lengths passed to the method
 	 */
 	public static double hypotenuse(int a, int b) {
 		double hypotenuse = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
@@ -105,8 +105,8 @@ public class MathPlus {
 	/**
 	 * This method returns the number of factors
 	 * a given integer has
-	 * @param num - integer being factored
-	 * @return - the number of a factors of the integer passed to the method
+	 * @param num -> integer to be factored
+	 * @return -> the number of a factors of the integer passed to the method
 	 */
 	public static int numOfFactors (int num) {
 		int numOfFactors = 0;
@@ -120,8 +120,8 @@ public class MathPlus {
 	/**
 	 * This method returns true if a given number is prime
 	 * otherwise is returns false
-	 * @param number - integer being checked to be prime
-	 * @return - true if the integer passed to the method is prime, false if not
+	 * @param number -> integer being checked to be prime
+	 * @return -> true if the integer passed to the method is prime, false if not
 	 */
 	public static boolean isPrime (int num) {
 		boolean isPrime = true;
@@ -140,8 +140,8 @@ public class MathPlus {
 	/**
 	 * This method adds all the numbers in an array
 	 * of integers and then returns the sum
-	 * @param x - the array of integers being added
-	 * @return - the sum of the array passed to the method
+	 * @param x -> an array of integers
+	 * @return -> the sum of the array passed to the method
 	 */
 	public static int sum(int[] numbers) {
 		int sum = 0;
@@ -154,8 +154,8 @@ public class MathPlus {
 	/**
 	 * This method adds all the numbers in an array
 	 * of doubles and then returns the sum
-	 * @param x - the array of doubles being added
-	 * @return - the sum of the array passed to the method
+	 * @param x -> an array of doubles
+	 * @return -> the sum of the array passed to the method
 	 */
 	public static double sum(double[] numbers) {
 		double sum = 0;
@@ -167,10 +167,10 @@ public class MathPlus {
 
 	/**
 	 * This method finds the smallest number in an
-	 * array of ints and returns the index
+	 * array of integers and returns the index of it
 	 * of where it is
-	 * @param numbers - array where min value is being found
-	 * @return - the index of the minimum value in the array passed to the method
+	 * @param numbers -> an array of integers
+	 * @return -> the index of the minimum value in the array passed to the method
 	 */
 	public static int min(int[] numbers) {
 		int minIndex = 0;
@@ -186,9 +186,9 @@ public class MathPlus {
 
 	/**
 	 * This method finds the smallest number in an
-	 * array of doubles and returns the index of where it is
-	 * @param numbers - array where min index is being found
-	 * @return - the index of the minimum value in the array passed to the method
+	 * array of doubles and returns the index of it
+	 * @param numbers -> an array of doubles
+	 * @return -> the index of the minimum value in the array passed to the method
 	 */
 	public static int min(double[] numbers) {
 		int minIndex = 0;
@@ -204,9 +204,9 @@ public class MathPlus {
 
 	/**
 	 * This method finds the largest number in an
-	 * array of ints and returns the index of where it is
-	 * @param numbers - array where the max index is being found
-	 * @return - the index of the maximum value in the array passed to the method
+	 * array of ints and returns the index of it
+	 * @param numbers -> an array of integers
+	 * @return -> the index of the maximum value in the array passed to the method
 	 */
 	public static int max(int[] numbers) {
 		int maxIndex = 0;
@@ -221,10 +221,10 @@ public class MathPlus {
 	}
 
 	/**
-	 * This method finds the largest number in an
-	 * array of ints and returns the index of where it is
-	 * @param numbers - array where the max index is being found
-	 * @return - the index of the maximum value in the array passed to the method
+	 * This method finds the largest number in an array
+	 * of integers and returns the index of it
+	 * @param numbers -> an array of doubles
+	 * @return -> the index of the maximum value in the array passed to the method
 	 */
 	public static int max(double[] numbers) {
 		int maxIndex = 0;
@@ -240,9 +240,9 @@ public class MathPlus {
 
 	/**
 	 * This method finds the difference between the largest
-	 * and smallest numbers in an array of integers
-	 * @param numbers - array where the difference between max and min is being found
-	 * @return - the difference between the largest and smallest ints 
+	 * and smallest integers in an array
+	 * @param numbers -> an array of integers
+	 * @return -> the difference between the largest and smallest ints 
 	 * in the array passed to the method
 	 */
 	public static int bigDifference(int[] numbers) {
@@ -262,9 +262,9 @@ public class MathPlus {
 
 	/**
 	 * This method finds the difference between the largest
-	 * and smallest numbers in an array of doubles
-	 * @param numbers - array where the difference between max and min is being found
-	 * @return - the difference between the largest and smallest doubles 
+	 * and smallest doubles in an array
+	 * @param numbers -> an array of doubles
+	 * @return -> the difference between the largest and smallest doubles 
 	 * in the array passed to the method
 	 */
 	public static double bigDifference(double[] numbers) {
@@ -284,25 +284,18 @@ public class MathPlus {
 
 	/**
 	 * This method returns an array of factors
-	 * for a given int passed to the method
-	 * @param num - int being factored
-	 * @return - array of factors for num
+	 * for a given integer passed to the method
+	 * @param num -> int to be factored
+	 * @return -> array of factors for num
 	 */
-	public static int[] factors(int num) {
-		int numOfFactors = 0;
-		for (int i = 1; i <= num; i++) {
-			if ((num % i) == 0) {
-				numOfFactors++;
-			}
-		}
-		int[] factors = new int[numOfFactors];
+	public static int[] factors(int num) {	
+		int[] factors = new int[numOfFactors(num)];
 		int index = 0;
-		for (int i = 1; i <= numOfFactors; i++) {
+		for (int i = 1; i <= num; i++) {
 			if ((num % i) == 0) {
 				factors[index++] = i;
 			}
 		}
-		//DOESNT WORK
 		return factors;
 	}
 }
