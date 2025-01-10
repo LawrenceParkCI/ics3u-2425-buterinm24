@@ -18,77 +18,73 @@ public class TaskTrack {
 	
 	static String[] titles = new String[20];
 	static String[] descriptions = new String [20];
+	static boolean[] isComplete = new boolean[20];
 	
 	public static void main(String[] args) {
 		//Creating console
-		//NOTE MAKE IT SO CONSOLE WORKS IN OTHER METHODS TOO
-		Console c = new Console (45, 180, "TaskTrack");
+		Console c = new Console (30, 150, "TaskTrack");
 		
 		//CREATING MAIN MENU DISPLAY
-		
-		//Setting background colour by making a rectangle
+
+		//Setting background colour using fillRect
 		c.setColor(new Color (198, 235, 183));
 		c.fillRect(0, 0, c.getWidth(), c.getHeight());
-		
-		//Writing headings using drawString
+
+		//Setting colour back to black to print headings
 		c.setColor(Color.BLACK);
 		c.setFont(new Font("Serif", Font.BOLD, 40));
-		c.drawString("Welcome to TaskTrack!", 520, 100);
+		c.drawString("Welcome to TaskTrack!", 400, 90);
 		
 		c.setFont(new Font("Serif", Font.PLAIN, 20));
-		c.drawString("Where would you like to go?", 620, 130);
+		c.drawString("Where would you like to go?", 500, 120);
 		
-		//Drawing options using fillRect and drawString
-		//Creating black rectangles for outline
-		c.fillRect(580, 180, 300, 100);
-		c.fillRect(580, 320, 300, 100);
-		c.fillRect(580, 460, 300, 100);
-		c.fillRect(580, 600, 300, 100);
+		//Drawing boxes for each option of where to go
+		c.fillRect(460, 140, 300, 90);
+		c.fillRect(460, 255, 300, 90);
+		c.fillRect(460, 370, 300, 90);
+		c.fillRect(460, 485, 300, 90);
 		
-		//Creating white rectangles on top
 		c.setColor(Color.WHITE);
-		c.fillRect(585, 185, 290, 90);
-		c.fillRect(585, 325, 290, 90);
-		c.fillRect(585, 465, 290, 90);
-		c.fillRect(585, 605, 290, 90);
+		c.fillRect(465, 145, 290, 80);
+		c.fillRect(465, 260, 290, 80);
+		c.fillRect(465, 375, 290, 80);
+		c.fillRect(465, 490, 290, 80);
 		
-		//Drawing text
-		//Setting font colour and size again
+		//Adding text for each option
 		c.setColor(Color.BLACK);
 		c.setFont(new Font("Serif", Font.BOLD, 27));
 		
-		//Drawing strings
-		c.drawString("1. ADD A TASK", 630, 240);
-		c.drawString("2. DISPLAY TASKS", 610, 380);
-		c.drawString("3. COMPLETE TASK", 600, 520);
-		c.drawString("4. EXIT", 680, 660);
+		c.drawString("1. ADD A TASK", 510, 195);
+		c.drawString("2. DISPLAY TASKS", 490, 310);
+		c.drawString("3. COMPLETE TASK", 480, 425);
+		c.drawString("4. EXIT", 560, 540);
 		
 		//MAIN METHOD CODE 
 		
 		//Declaring variables
 		String title = "";
 		String description = "";
-		int currentTaskCount = 0;
+		int taskCount = 0;
 		
-		//Getting input on where user wants to go
+		//Getting user input on where they want to go
 		c.print("Please enter the number of where you would like to go here: ");
 		int answer = c.readInt();
 		
-		//Clearing screen but keeping background colour
+		//Clearing screen/keeping background colour
 		c.clear();
 		c.setColor(new Color (198, 235, 183));
 		c.fillRect(0, 0, c.getWidth(), c.getHeight());
 		
+		//Case if user enters 1
 		if (answer == 1) {
-			//Getting information about task
 			c.println("Alright, let's add a new task to the list!");
 			c.println("Please enter the following information about your task:");
-			c.print("Title of the task: ");
+			c.print("\nTitle of the task: ");
 			title = c.readLine();
-			c.print("Description of the task (if none, just enter \"/\"): ");
+			c.print("\nDescription of the task (if none, just enter \"/\"): ");
 			description = c.readLine();
-			//Calling addTask method
-			addTask(title, description, currentTaskCount);
+			
+			taskCount = addTask(title, description, taskCount);
 			c.println("The task has been successfully added!");
 			
 		}
@@ -113,9 +109,12 @@ public class TaskTrack {
 	 * @param currentTaskCount -> current number of existing tasks
 	 * @return -> updated count of existing tasks
 	 */
-	public static int addTask (String title, String description, int currentTaskCount) {
+	public static int addTask (String title, String description, int taskCount) {
+		titles[taskCount] = title;
+		descriptions[taskCount] = description;
+		isComplete[taskCount] = false;
 		
-		int taskCount = currentTaskCount++;
+		taskCount++;
 		return taskCount;
 	}
 
