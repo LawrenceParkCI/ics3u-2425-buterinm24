@@ -126,7 +126,7 @@ public class TaskTrack {
 	 * @return -> updated count of existing tasks
 	 */
 	public static int addTask (String title, String description, int taskCount) {
-		//Adding info about task to respective arrays
+		//adding info about task to respective arrays
 		titles[taskCount] = title;
 		descriptions[taskCount] = description;
 		isComplete[taskCount] = false;
