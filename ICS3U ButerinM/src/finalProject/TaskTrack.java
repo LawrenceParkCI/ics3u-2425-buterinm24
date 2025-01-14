@@ -6,7 +6,7 @@ import java.awt.Font;
 import hsa_new.Console;
 
 /**
- * Description: This program allows a user to create their own to-do list.
+ * Description: This is an interactive program allows a user to create their own to-do list.
  * Date: January 15, 2024
  * @author Misha Buterin
  */
@@ -24,7 +24,7 @@ public class TaskTrack {
 	static String[] descriptions = new String [20];
 	static String[] dates = new String[20];
 	static boolean[] isComplete = new boolean[20];
-	static int maxTasks = 20;
+	static int maxTasks = 16;
 
 	public static void main(String[] args) {
 		//Creating console
@@ -95,6 +95,8 @@ public class TaskTrack {
 
 			//user enters 1
 			if (ans1 == 1) {
+				addingTasks = true; 
+				
 				while (addingTasks) {
 					//clearing background for when the loop runs again
 					c.clear();
@@ -121,13 +123,13 @@ public class TaskTrack {
 					//asking if they want to add another task, so they don't have to return to the main menu to do so
 					c.println("Would you like to add another task? (yes/no)");
 					ans3 = c.readLine();
-					
+
 					if (ans3.equalsIgnoreCase("no")) {
 						addingTasks = false;
 					}
 					//accounting for invalid input
 					else if (!ans3.equalsIgnoreCase("yes") && !ans3.equalsIgnoreCase("no")) {
-						c.println("That is not a valid answer.");
+						c.println("That is not a valid answer.\n");
 						addingTasks = false;
 					}
 				}
@@ -157,14 +159,14 @@ public class TaskTrack {
 
 					//using completeTask method to check off the task
 					isComplete[taskCount] = completeTask(completedTaskNumber, taskCount);
-					c.println("\nThe task has been checked off.");
+					c.println("\nThe task has been checked off.\n");
 				} 
 			}
 			//user enters 4
 			else if (ans1 == 4) {
 				c.setColor(Color.BLACK);
 				c.drawString("EXIT", 580, 540);
-				
+
 				c.drawString("Thank you for visiting!", 450, 120);
 				//FIX RETURN TO MAIN MENU ON EXIT OPTION
 				//MAYBE JUST DELETE CAUSE IT DOES IT ANYWAY
@@ -177,7 +179,7 @@ public class TaskTrack {
 			}
 
 			//directing user back to the main menu
-			c.println("\nWould you like to return to the main menu? (yes/no)");
+			c.println("Would you like to return to the main menu? (yes/no)");
 			ans2 = c.readLine();
 
 
@@ -229,56 +231,51 @@ public class TaskTrack {
 			c.drawString("You have no tasks to display.", 440, 140);
 		}
 
-		//DRAW STRINGSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-		//printing tasks using a for loop
-		for (int i = 0; i < Math.min(taskCount, 10); i++) {
-			String status;
-			String description;
-
-			//checking completion status
-			if (isComplete[i]) {
-				status = "[✓] ";
-			} else {
-				status = "[ ] ";
-			}
-			//checking if there is a description
-			if (descriptions[i].equals("/")) {
-				description = "No description provided";
-			} else {
-				description = descriptions[i];
-			}
-
-			c.println("\n" + (i + 1) + "." + status + titles[i]);	
-			c.println("  -  " + description);
-		}
+		//variables to print tasks using drawString
+		int x1 = 50;
+		int x2 = 580;
+		int y1 = 80;
+		int y2 = 50;
 		
-		for (int i = 0; i < Math.min(taskCount, 20); i++) {
+		//setting font
+		c.setFont(new Font("Courier New", Font.PLAIN, 16));
+
+		//printing tasks using a for loop
+		for (int i = 0; i < 8; i++) {
 			String status;
 			String description;
 
-			//checking completion status
-			if (isComplete[i]) {
-				status = "[✓] ";
-			} else {
-				status = "[ ] ";
+			if (i < taskCount) {
+				if (isComplete[i]) {
+					status = "[✓] ";
+				} else {
+					status = "[ ] ";
+				}	
+				if (descriptions[i].equals("/")) {
+					description = "No description provided";
+				} else {
+					description = descriptions[i];
+				}
+
+				c.drawString(((i + 1) + "." + status + titles[i]), x1, y1 + i * y2);	
+				c.drawString(("   -  " + description), x1, y1 + i * y2 + 20);
 			}
-			//checking if there is a description
-			if (descriptions[i].equals("/")) {
-				description = "No description provided";
-			} else {
-				description = descriptions[i];
+			if (i + 8 < taskCount) {
+				if (isComplete[i + 8]) {
+					status = "[✓] ";
+				} else {
+					status = "[ ] ";
+				}	
+				if (descriptions[i + 8].equals("/")) {
+					description = "No description provided";
+				} else {
+					description = descriptions[i];
+				}
+
+				c.drawString((i + 9) + "." + status + titles[i], x2,  y1 + i * y2);	
+				c.drawString("   -  " + description, x2,  y1 + i * y2 + 20);
 			}
-
-			c.println("\n" + (i + 1) + "." + status + titles[i]);	
-			c.println("  -  " + description);
 		}
-
-		try {
-			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
 	}
 
 	/**
