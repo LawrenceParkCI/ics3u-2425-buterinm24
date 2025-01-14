@@ -22,7 +22,9 @@ public class TaskTrack {
 	//Initializing arrays so they work in all methods
 	static String[] titles = new String[20];
 	static String[] descriptions = new String [20];
+	static String[] dates = new String[20];
 	static boolean[] isComplete = new boolean[20];
+	static int maxTasks = 20;
 
 	public static void main(String[] args) {
 		//Creating console
@@ -42,7 +44,7 @@ public class TaskTrack {
 			c.clear();
 
 			//Setting background colour using fillRect
-			c.setColor(new Color (198, 235, 183));
+			c.setColor(new Color (200, 240, 180));
 			c.fillRect(0, 0, c.getWidth(), c.getHeight());
 
 			//Setting colour back to black to print headings
@@ -77,13 +79,13 @@ public class TaskTrack {
 			//MAIN METHOD CODE 
 
 			//Getting user input on where they want to go
-			c.setTextBackgroundColor(new Color (198, 235, 183));
+			c.setTextBackgroundColor(new Color (200, 240, 180));
 			c.print("Please enter the number of where you would like to go here: ");
 			ans1 = c.readInt();
 
 			//Clearing screen/keeping background colour
 			c.clear();
-			c.setColor(new Color (198, 235, 183));
+			c.setColor(new Color (200, 240, 180));
 			c.fillRect(0, 0, c.getWidth(), c.getHeight());
 
 			c.setColor(Color.BLACK);
@@ -91,12 +93,12 @@ public class TaskTrack {
 			c.setColor(Color.WHITE);
 			c.fillRect(465, 490, 290, 80);
 
-			//Case if user enters 1
+			//user enters 1
 			if (ans1 == 1) {
 				while (addingTasks) {
 					//clearing background for when the loop runs again
 					c.clear();
-					c.setColor(new Color (198, 235, 183));
+					c.setColor(new Color (200, 240, 180));
 					c.fillRect(0, 0, c.getWidth(), c.getHeight());
 					c.setColor(Color.BLACK);
 					c.fillRect(460, 485, 300, 90);
@@ -115,22 +117,29 @@ public class TaskTrack {
 					//Calling addTask method to add the task
 					taskCount = addTask(title, description, taskCount);
 					c.println("\nThe task has been successfully added!\n");
-					
+
+					//asking if they want to add another task, so they don't have to return to the main menu to do so
 					c.println("Would you like to add another task? (yes/no)");
 					ans3 = c.readLine();
+					
 					if (ans3.equalsIgnoreCase("no")) {
+						addingTasks = false;
+					}
+					//accounting for invalid input
+					else if (!ans3.equalsIgnoreCase("yes") && !ans3.equalsIgnoreCase("no")) {
+						c.println("That is not a valid answer.");
 						addingTasks = false;
 					}
 				}
 			}
-			//
+			//user enters 2
 			else if (ans1 == 2) {
 				c.setColor(Color.BLACK);
 				c.drawString("TASKS LIST", 530, 540);
-
+				//calling displayTasks method
 				displayTasks(taskCount);
 			}
-			//
+			//user enters 3
 			else if (ans1 == 3) {
 				c.setColor(Color.BLACK);
 				c.drawString("COMPLETE TASK", 500, 540);
@@ -138,8 +147,7 @@ public class TaskTrack {
 				//checking if there are no tasks
 				if (taskCount == 0) {
 					c.println("You have no tasks to mark as complete.");
-				}
-				else {
+				} else {
 					//printing tasks for user to see numbers
 					c.print("Here are your current tasks:");
 					displayTasks(taskCount);
@@ -147,29 +155,42 @@ public class TaskTrack {
 					c.print("\nPlease enter the number of the task you would like to check off: ");
 					completedTaskNumber = c.readInt();
 
-					//Using completeTask method to check off the task
+					//using completeTask method to check off the task
 					isComplete[taskCount] = completeTask(completedTaskNumber, taskCount);
 					c.println("\nThe task has been checked off.");
 				} 
 			}
+			//user enters 4
 			else if (ans1 == 4) {
 				c.setColor(Color.BLACK);
 				c.drawString("EXIT", 580, 540);
-
+				
 				c.drawString("Thank you for visiting!", 450, 120);
 				//FIX RETURN TO MAIN MENU ON EXIT OPTION
+				//MAYBE JUST DELETE CAUSE IT DOES IT ANYWAY
 			}
+			//accounting for invalid input 
 			else {
+				c.setColor(Color.BLACK);
+				c.drawString("ERROR", 560, 540);
 				c.println("That is not a valid input.");
 			}
 
-			c.println("Would you like to return to the main menu? (yes/no)");
+			//directing user back to the main menu
+			c.println("\nWould you like to return to the main menu? (yes/no)");
 			ans2 = c.readLine();
-		
+
 
 		} while (ans2.equalsIgnoreCase("yes"));
-	}
 
+		//Printing exit screen
+		c.clear();
+		c.setColor(new Color (200, 240, 180));
+		c.fillRect(0, 0, c.getWidth(), c.getHeight());
+		c.setColor(Color.BLACK);
+		c.drawString("Thank you for visiting!", 450, 120);
+
+	}
 
 	/**
 	 * This method takes a title and description entered by a user,
@@ -181,13 +202,18 @@ public class TaskTrack {
 	 * @return -> updated count of existing tasks
 	 */
 	public static int addTask (String title, String description, int taskCount) {
-		//adding info about task to respective arrays
-		titles[taskCount] = title;
-		descriptions[taskCount] = description;
-		isComplete[taskCount] = false;
+		//checking if the max number of tasks has been reached
+		if (taskCount >= maxTasks) {
+			c.println("The task list is full, you cannot add anymore tasks.");
+		} else {
+			//adding info about task to respective arrays
+			titles[taskCount] = title;
+			descriptions[taskCount] = description;
+			isComplete[taskCount] = false;
 
-		//incrementing task count once the task has been added
-		taskCount++;
+			//incrementing task count once the task has been added
+			taskCount++;
+		}
 		return taskCount;
 	}
 
@@ -203,16 +229,17 @@ public class TaskTrack {
 			c.drawString("You have no tasks to display.", 440, 140);
 		}
 
+		//DRAW STRINGSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 		//printing tasks using a for loop
-		for (int i = 0; i < taskCount; i++) {
+		for (int i = 0; i < Math.min(taskCount, 10); i++) {
 			String status;
 			String description;
 
 			//checking completion status
 			if (isComplete[i]) {
-				status = "[✓]";
+				status = "[✓] ";
 			} else {
-				status = "[ ]";
+				status = "[ ] ";
 			}
 			//checking if there is a description
 			if (descriptions[i].equals("/")) {
@@ -220,13 +247,34 @@ public class TaskTrack {
 			} else {
 				description = descriptions[i];
 			}
-			
+
 			c.println("\n" + (i + 1) + "." + status + titles[i]);	
-			c.println("\t" + description);
+			c.println("  -  " + description);
+		}
+		
+		for (int i = 0; i < Math.min(taskCount, 20); i++) {
+			String status;
+			String description;
+
+			//checking completion status
+			if (isComplete[i]) {
+				status = "[✓] ";
+			} else {
+				status = "[ ] ";
+			}
+			//checking if there is a description
+			if (descriptions[i].equals("/")) {
+				description = "No description provided";
+			} else {
+				description = descriptions[i];
+			}
+
+			c.println("\n" + (i + 1) + "." + status + titles[i]);	
+			c.println("  -  " + description);
 		}
 
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(4000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
