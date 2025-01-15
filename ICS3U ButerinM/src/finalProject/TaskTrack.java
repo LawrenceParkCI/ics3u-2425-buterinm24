@@ -31,23 +31,25 @@ public class TaskTrack {
 		c = new Console (30, 150, "TaskTrack");
 
 		//Declaring variables
+		//CONDENSE TASKS LIST
 		String title = "";
 		String description = "";
-		String ans2, ans3;
+		String ans2, ans3, ans4;
 		int ans1;
 		int completedTaskNumber; 
 		int taskCount = 0;
-		boolean addingTasks = true;
+		int completedTasks = 0;
+		boolean addingTasks, completingTasks = true;
 
 		do {
 			//CREATING MAIN MENU DISPLAY
 			c.clear();
 
-			//Setting background colour using fillRect
+			//Setting background colour
 			c.setColor(new Color (200, 240, 180));
 			c.fillRect(0, 0, c.getWidth(), c.getHeight());
 
-			//Setting colour back to black to print headings
+			//Printing headings
 			c.setColor(Color.BLACK);
 			c.setFont(new Font("Serif", Font.BOLD, 40));
 			c.drawString("Welcome to TaskTrack!", 400, 90);
@@ -67,7 +69,7 @@ public class TaskTrack {
 			c.fillRect(465, 375, 290, 80);
 			c.fillRect(465, 490, 290, 80);
 
-			//Adding text for each option
+			//Drawing text for each option
 			c.setColor(Color.BLACK);
 			c.setFont(new Font("Serif", Font.BOLD, 27));
 
@@ -83,7 +85,7 @@ public class TaskTrack {
 			c.print("Please enter the number of where you would like to go here: ");
 			ans1 = c.readInt();
 
-			//Clearing screen/keeping background colour
+			//Clearing screen/repainting background
 			c.clear();
 			c.setColor(new Color (200, 240, 180));
 			c.fillRect(0, 0, c.getWidth(), c.getHeight());
@@ -93,12 +95,13 @@ public class TaskTrack {
 			c.setColor(Color.WHITE);
 			c.fillRect(465, 490, 290, 80);
 
-			//user enters 1
+			//User enters 1
 			if (ans1 == 1) {
 				addingTasks = true; 
-				
+
+				//Loop that runs until the user does not want to add anymore tasks
 				while (addingTasks) {
-					//clearing background for when the loop runs again
+					//Clearing background for when the loop runs again
 					c.clear();
 					c.setColor(new Color (200, 240, 180));
 					c.fillRect(0, 0, c.getWidth(), c.getHeight());
@@ -110,7 +113,8 @@ public class TaskTrack {
 					c.drawString("ADD A TASK", 530, 540);
 
 					c.println("Alright, let's add a new task to the list!");
-					c.println("Please enter the following information about your task:");
+					c.println("\nYou currently have: " + taskCount + " task(s). The maximum capacity is 16.");
+					c.println("\nPlease enter the following information about your task:");
 					c.print("\nTitle of the task: ");
 					title = c.readLine();
 					c.print("\n(Short) Description of the task (if none, just enter \"/\"): ");
@@ -143,23 +147,67 @@ public class TaskTrack {
 			}
 			//user enters 3
 			else if (ans1 == 3) {
-				c.setColor(Color.BLACK);
-				c.drawString("COMPLETE TASK", 500, 540);
+				completingTasks = true;
+				
+				while (completingTasks) {
+					c.clear();
+					c.setColor(new Color (200, 240, 180));
+					c.fillRect(0, 0, c.getWidth(), c.getHeight());
+					c.setColor(Color.BLACK);
+					c.fillRect(460, 485, 300, 90);
+					c.setColor(Color.WHITE);
+					c.fillRect(465, 490, 290, 80);
+					c.setColor(Color.BLACK);
+					c.setFont(new Font("Serif", Font.BOLD, 27));
+					c.drawString("COMPLETE TASK", 490, 540);
 
-				//checking if there are no tasks
-				if (taskCount == 0) {
-					c.println("You have no tasks to mark as complete.");
-				} else {
-					//printing tasks for user to see numbers
-					c.print("Here are your current tasks:");
-					displayTasks(taskCount);
+					//checking if there are no tasks
+					if (taskCount == 0) {
+						c.println("You have no tasks to mark as complete.");
+						completingTasks = false;
+					} 
+					//checking if all tasks are complete already
+					else if (completedTasks == taskCount) {
+						c.println("All your tasks are complete!");
+						completingTasks = false;
+					} else {
+						//printing tasks for user to see numbers
+						c.print("Here are your current tasks:");
+						displayTasks(taskCount);
+						
+						c.print("\nPlease enter the number of the task you would like to check off: ");
+						completedTaskNumber = c.readInt();
+						
+						//clearing task list so text doesn't overlap
+						c.clear();
+						c.setColor(new Color (200, 240, 180));
+						c.fillRect(0, 0, c.getWidth(), c.getHeight());
+						c.setColor(Color.BLACK);
+						c.fillRect(460, 485, 300, 90);
+						c.setColor(Color.WHITE);
+						c.fillRect(465, 490, 290, 80);
+						c.setColor(Color.BLACK);
+						c.setFont(new Font("Serif", Font.BOLD, 27));
+						c.drawString("COMPLETE TASK", 500, 540);
 
-					c.print("\nPlease enter the number of the task you would like to check off: ");
-					completedTaskNumber = c.readInt();
+						//using completeTask method to check off the task
+						isComplete[taskCount] = completeTask(completedTaskNumber, taskCount);
+						c.println("The task has been checked off.\n");
+						
+						//asking if they want to add another task, so they don't have to return to the main menu to do so
+						c.println("Would you like to add check off another task? (yes/no)");
+						ans4 = c.readLine();
 
-					//using completeTask method to check off the task
-					isComplete[taskCount] = completeTask(completedTaskNumber, taskCount);
-					c.println("\nThe task has been checked off.\n");
+						if (ans4.equalsIgnoreCase("no")) {
+							completingTasks = false;
+						}
+						//accounting for invalid input
+						else if (!ans4.equalsIgnoreCase("yes") && !ans4.equalsIgnoreCase("no")) {
+							c.println("That is not a valid answer.\n");
+							completingTasks = false;
+						}
+						completedTasks++;
+					}
 				} 
 			}
 			//user enters 4
@@ -167,9 +215,7 @@ public class TaskTrack {
 				c.setColor(Color.BLACK);
 				c.drawString("EXIT", 580, 540);
 
-				c.drawString("Thank you for visiting!", 450, 120);
-				//FIX RETURN TO MAIN MENU ON EXIT OPTION
-				//MAYBE JUST DELETE CAUSE IT DOES IT ANYWAY
+				c.println("You are about to exit the program.");
 			}
 			//accounting for invalid input 
 			else {
@@ -236,7 +282,7 @@ public class TaskTrack {
 		int x2 = 580;
 		int y1 = 80;
 		int y2 = 50;
-		
+
 		//setting font
 		c.setFont(new Font("Courier New", Font.PLAIN, 16));
 
@@ -247,9 +293,9 @@ public class TaskTrack {
 
 			if (i < taskCount) {
 				if (isComplete[i]) {
-					status = "[✓] ";
+					status = "[Done] ";
 				} else {
-					status = "[ ] ";
+					status = "[    ] ";
 				}	
 				if (descriptions[i].equals("/")) {
 					description = "No description provided";
@@ -262,24 +308,25 @@ public class TaskTrack {
 			}
 			if (i + 8 < taskCount) {
 				if (isComplete[i + 8]) {
-					status = "[✓] ";
+					status = "[Done] ";
 				} else {
-					status = "[ ] ";
+					status = "[    ] ";
 				}	
 				if (descriptions[i + 8].equals("/")) {
 					description = "No description provided";
 				} else {
-					description = descriptions[i];
+					description = descriptions[i + 8];
 				}
 
-				c.drawString((i + 9) + "." + status + titles[i], x2,  y1 + i * y2);	
+				c.drawString((i + 9) + "." + status + titles[i + 8], x2,  y1 + i * y2);	
 				c.drawString("   -  " + description, x2,  y1 + i * y2 + 20);
 			}
 		}
 	}
 
 	/**
-	 * This method
+	 * This method takes the number of a task that the user wants to complete
+	 * and changes its status to complete, returning true for isComplete
 	 * @param completedTaskNumber -> the number of the task the user wants to check off
 	 * @return
 	 */
@@ -294,7 +341,4 @@ public class TaskTrack {
 		isComplete[index] = true;
 		return true;
 	}
-
-
-
 }
