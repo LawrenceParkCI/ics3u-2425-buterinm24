@@ -6,35 +6,34 @@ import java.awt.Font;
 import hsa_new.Console;
 
 /**
- * Description: This is an interactive program allows a user to create their own to-do list.
+ * Description: This program is a user interactive to-do list that allows users to add,
+ * view and complete tasks to stay organized.
  * Date: January 16, 2024
  * @author Misha Buterin
  */
 public class TaskTrack {
 	/**
-	 * This is the entry point to the program
+	 * This is the entry point to the program.
 	 * @param args
 	 */
 
-	//Initializing console so it works in all methods
+	//Declaring console so it works in all methods
 	static Console c;
 
-	//Initializing arrays so they work in all methods
-	static String[] titles = new String[20];
-	static String[] descriptions = new String [20];
-	static String[] dates = new String[20];
-	static boolean[] isComplete = new boolean[20];
+	//Declaring arrays and maximum tasks so they work in all methods
+	static String[] titles = new String[16];
+	static String[] descriptions = new String [16];
+	static boolean[] isComplete = new boolean[16];
 	static int maxTasks = 16;
 
 	public static void main(String[] args) {
-		//Creating console
+		//Initializing console
 		c = new Console (30, 150, "TaskTrack");
 
 		//Declaring variables
 		String title = "", description = "";
-		String ans2, ans3, ans4;
-		int ans1;
-		int completedTaskNumber; 
+		String ans1, ans2, ans3, ans4;
+		int completedTaskNum; 
 		int taskCount = 0, completedTasks = 0;
 		boolean addingTasks = true, completingTasks = true;
 
@@ -75,12 +74,11 @@ public class TaskTrack {
 			c.drawString("3. COMPLETE TASK", 480, 425);
 			c.drawString("4. EXIT", 560, 540);
 
-			//Main method code
-
 			//Getting user input on where they want to go
 			c.setTextBackgroundColor(new Color (200, 240, 180));
 			c.print("Please enter the number of where you would like to go here: ");
-			ans1 = c.readInt();
+			ans1 = c.readLine(); //Using a String and not int here in case the user
+			//enters some random letters, so there won't be an error of the wrong data type
 
 			//Clearing screen/repainting background
 			c.clear();
@@ -93,7 +91,8 @@ public class TaskTrack {
 			c.fillRect(465, 490, 290, 80);
 
 			//User enters 1
-			if (ans1 == 1) {
+			if (ans1.equals("1")) {
+				//Resetting addingTasks to true every time the user enters 1
 				addingTasks = true; 
 
 				//Loop that runs until the user does not want to add anymore tasks
@@ -126,9 +125,10 @@ public class TaskTrack {
 					c.println("\nThe task has been successfully added!\n");
 
 					//Asking if they want to add another task, so they don't have to return to the main menu to do so
-					c.println("Would you like to add another task? (yes/no)");
+					c.println("Would you like to add another task? (type yes or no)");
 					ans3 = c.readLine();
 
+					//Terminating loop
 					if (ans3.equalsIgnoreCase("no")) {
 						addingTasks = false;
 					}
@@ -140,7 +140,7 @@ public class TaskTrack {
 				}
 			}
 			//User enters 2
-			else if (ans1 == 2) {
+			else if (ans1.equals("2")) {
 				//Drawing heading
 				c.setColor(Color.BLACK);
 				c.drawString("TASKS LIST", 530, 540);
@@ -149,7 +149,7 @@ public class TaskTrack {
 				displayTasks(taskCount);
 			}
 			//User enters 3
-			else if (ans1 == 3) {
+			else if (ans1.equals("3")) {
 				completingTasks = true;
 
 				while (completingTasks) {
@@ -181,8 +181,9 @@ public class TaskTrack {
 						c.print("Here are your current tasks:");
 						displayTasks(taskCount);
 
+						//Getting user input on which task to mark as complete
 						c.print("\nPlease enter the number of the task you would like to check off: ");
-						completedTaskNumber = c.readInt();
+						completedTaskNum = c.readInt();
 
 						//Clearing task list so text doesn't overlap
 						c.clear();
@@ -197,15 +198,16 @@ public class TaskTrack {
 						c.drawString("COMPLETE TASK", 490, 540);
 
 						//Checking if the selected task is already complete
-						if (isComplete[completedTaskNumber -1]) {
+						if (isComplete[completedTaskNum -1]) {
 							c.println("That task has already been marked as complete.");
 						} 
 						//Marking selected task as complete
 						else {
-						isComplete[taskCount] = completeTask(completedTaskNumber, taskCount);
+						isComplete[taskCount] = completeTask(completedTaskNum, taskCount);
 						c.println("The task has been checked off.\n");
 						}
 						
+						//Giving user time to read screen
 						try {
 							Thread.sleep(3000);
 						} catch (InterruptedException e) {
@@ -217,9 +219,10 @@ public class TaskTrack {
 
 						//Asking if they want to add another task, so they don't have to return to the main menu to do so
 						if (!(completedTasks == taskCount)) {
-							c.println("Would you like to check off another task? (yes/no)");
+							c.println("Would you like to check off another task? (type yes or no)");
 							ans4 = c.readLine();
 
+							//Terminating loop
 							if (ans4.equalsIgnoreCase("no")) {
 								completingTasks = false;
 							}
@@ -234,12 +237,11 @@ public class TaskTrack {
 			}
 			
 			//User enters 4
-			else if (ans1 == 4) {
+			else if (ans1.equals("4")) {
 				//Drawing heading
 				c.setColor(Color.BLACK);
 				c.drawString("EXIT", 580, 540);
 
-				//Telling user they are about to exit in case they mistyped 
 				c.println("You are about to exit the program.");
 			}
 			//Accounting for invalid input 
@@ -250,20 +252,29 @@ public class TaskTrack {
 			}
 
 			//Directing user back to the main menu
-			c.println("Would you like to return to the main menu? (yes/no)");
+			c.println("\nWould you like to return to the main menu, or exit the program? (type return or exit)");
 			ans2 = c.readLine();
 			
 			//Accounting for invalid input
-			if(!ans2.equalsIgnoreCase("yes") || !ans2.equalsIgnoreCase("no")) {
+			if(!(ans2.equalsIgnoreCase("return")) && !(ans2.equalsIgnoreCase("exit"))) {
 				c.println("That is not a valid answer.");
+				ans2 = "return"; //Returning user to the main menu after they typed an invalid answer
+				
+				//Giving user time to read screen
+				try {
+					Thread.sleep(3500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 			
-		} while (ans2.equalsIgnoreCase("yes"));
+		} while (ans2.equalsIgnoreCase("return"));
 
 		//Drawing exit screen
 		c.clear();
 		c.setColor(new Color (200, 240, 180));
 		c.fillRect(0, 0, c.getWidth(), c.getHeight());
+		c.setFont(new Font("Serif", Font.BOLD, 27));
 		c.setColor(Color.BLACK);
 		c.drawString("Thank you for visiting!", 450, 120);
 	}
@@ -323,6 +334,7 @@ public class TaskTrack {
 
 			//Left column
 			if (i < taskCount) {
+				//Checking completion status and description
 				if (isComplete[i]) {
 					status = "[DONE] ";
 				} else {
@@ -334,11 +346,13 @@ public class TaskTrack {
 					description = descriptions[i];
 				}
 
+				//Drawing task
 				c.drawString(((i + 1) + "." + status + titles[i]), x1, y1 + i * y2);	
 				c.drawString(("   -  " + description), x1, y1 + i * y2 + 20);
 			}
 			//Right column
 			if (i + 8 < taskCount) {
+				//Checking completion status and description
 				if (isComplete[i + 8]) {
 					status = "[Done] ";
 				} else {
@@ -350,6 +364,7 @@ public class TaskTrack {
 					description = descriptions[i + 8];
 				}
 
+				//Drawing task
 				c.drawString((i + 9) + "." + status + titles[i + 8], x2,  y1 + i * y2);	
 				c.drawString("   -  " + description, x2,  y1 + i * y2 + 20);
 			}
@@ -359,17 +374,17 @@ public class TaskTrack {
 	/**
 	 * This method marks a task of the user's choice complete by updating its
 	 * value in the isComplete[] array.
-	 * @param completedTaskNumber -> The number of the task the user wants to check off
+	 * @param completedTaskNum -> The number of the task the user wants to check off
 	 * @return -> The updated completion status of the task
 	 */
-	public static boolean completeTask (int completedTaskNumber, int taskCount) {
+	public static boolean completeTask (int completedTaskNum, int taskCount) {
 		//Accounting for invalid input
-		if (completedTaskNumber < 1 || completedTaskNumber > taskCount) {
+		if (completedTaskNum < 1 || completedTaskNum > taskCount) {
 			c.println("Invalid task number.");
 		}
 
 		//Updating isComplete value of the selected task
-		int index = completedTaskNumber - 1;
+		int index = completedTaskNum - 1;
 		isComplete[index] = true;
 		return true;
 	}
